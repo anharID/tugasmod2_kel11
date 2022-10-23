@@ -1,8 +1,8 @@
+import { useState } from "react";
 import SearchInput from "./components/SearchInput";
 import Button from "./components/Button";
 import Card from "./components/Card";
 import "./App.css";
-import { useState } from "react";
 import data from "./data";
 
 function App() {
@@ -12,7 +12,8 @@ function App() {
   const getInput = (e) => {
     setInput(e.target.value);
   };
-  const searchData = () => {
+  const searchData = (e) => {
+    e.preventDefault();
     input !== "" && setFilteredData(data.filter((e) => e.nama_lengkap.toLowerCase().includes(input.toLowerCase())));
   };
 
@@ -22,14 +23,14 @@ function App() {
         <h1>Aegis Member</h1>
         <p>Tugas Modul 2 RPLBK by Kelompok 11</p>
         <div className="Searchbar">
-          <SearchInput border="red" background="#282c34" onChange={getInput} placeholder="Cari nama seseorang" required />
-          <Button background="#282c34" border="blue 2px solid" onClick={searchData}>
-            Cari
+          <SearchInput type="text" border="red" background="#282c34" onChange={getInput} placeholder="Cari nama seseorang" />
+          <Button type="submit" background="#282c34" border="blue 2px solid" onClick={searchData}>
+            Search
           </Button>
         </div>
         <div id="result"></div>
-        {filteredData.map((e, index) => {
-          return <Card data={e} key={index} />;
+        {filteredData.map((e) => {
+          return <Card data={e} />;
         })}
       </header>
     </div>

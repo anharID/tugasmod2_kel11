@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const StyledCard = styled.div`
-  width: 450px;
+  width: 50%;
   display: flex;
   flex-direction: column;
   box-shadow: 0 8px 16px 0 rgba(255, 255, 255, 0.3);
@@ -9,9 +9,12 @@ const StyledCard = styled.div`
   border-radius: 20px;
   margin: 20px;
   border: 1px white solid;
+  &:hover {
+    box-shadow: 0 16px 32px 0 rgba(255, 255, 255, 0.3);
+  }
 `;
 const Header = styled.div`
-  height: 150px;
+  height: 200px;
   color: white;
   text-align: center;
   display: flex;

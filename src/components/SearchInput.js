@@ -7,6 +7,9 @@ export default styled.input`
   padding: 7px 10px;
   background: white;
   color: white;
+  &:active {
+    outline: none;
+  }
   ${(props) =>
     props.border &&
     css`
