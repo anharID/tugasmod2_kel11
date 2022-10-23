@@ -27,7 +27,6 @@ function App() {
             Search
           </Button>
         </div>
-        <div id="result"></div>
         {filteredData.map((e) => {
           return <Card data={e} />;
         })}
