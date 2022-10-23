@@ -12,8 +12,7 @@ function App() {
   const getInput = (e) => {
     setInput(e.target.value);
   };
-  const searchData = (e) => {
-    e.preventDefault();
+  const searchData = () => {
     input !== "" && setFilteredData(data.filter((e) => e.nama_lengkap.toLowerCase().includes(input.toLowerCase())));
   };
 
