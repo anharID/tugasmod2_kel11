@@ -1,22 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import SearchInput from "./components/SearchInput";
+import Button from "./components/Button";
+import Card from "./components/Card";
+import "./App.css";
+import { useState } from "react";
+import data from "./data";
 
 function App() {
+  const [input, setInput] = useState("");
+  const [filteredData, setFilteredData] = useState([]);
+
+  const getInput = (e) => {
+    setInput(e.target.value);
+  };
+  const searchData = () => {
+    input !== "" && setFilteredData(data.filter((e) => e.nama_lengkap.toLowerCase().includes(input.toLowerCase())));
+  };
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1>Aegis Member</h1>
+        <p>Tugas Modul 2 RPLBK by Kelompok 11</p>
+        <div className="Searchbar">
+          <SearchInput border="red" background="#282c34" onChange={getInput} placeholder="Cari nama seseorang" required />
+          <Button background="#282c34" border="blue 2px solid" onClick={searchData}>
+            Cari
+          </Button>
+        </div>
+        <div id="result"></div>
+        {filteredData.map((e, index) => {
+          return <Card data={e} key={index} />;
+        })}
       </header>
     </div>
   );
